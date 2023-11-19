@@ -16,6 +16,8 @@ const Offset = styled('div')(({theme}) => theme.mixins.toolbar);
 
 const SiteHeader = ({history}) => {
     const [anchorEl, setAnchorEl] = useState(null);
+    const [movieListAnchorEl, setMovieListAnchorEl] = useState(null);
+    const [personalMenuAnchorEl, setPersonalMenuAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
     const theme = useTheme();
@@ -25,12 +27,16 @@ const SiteHeader = ({history}) => {
 
     const menuOptions = [
         {label: "Home", path: "/"},
-        {label: "Favorites", path: "/movies/favorites"},
-        {label: "Upcoming", path: "/movies/upcoming"},
-        {label: "Playlist", path: "/movies/playlist"},
-        {label: "TopRated", path: "/movies/topRated"},
-    ];
 
+    ];
+    const moviesOreder = [
+        {label: "TopRated", path: "/movies/topRated"},
+        {label: "Upcoming", path: "/movies/upcoming"},
+    ]
+    const personalMenu = [
+        {label: "Favorites", path: "/movies/favorites"},
+        {label: "Playlist", path: "/movies/playlist"},
+    ]
     const handleMenuSelect = (pageURL) => {
         navigate(pageURL, {replace: true});
     };
@@ -39,6 +45,22 @@ const SiteHeader = ({history}) => {
         setAnchorEl(event.currentTarget);
     };
 
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleMovieListClick = (event) => {
+        setMovieListAnchorEl(event.currentTarget);
+    };
+
+    const handlePersonalMenuClick = (event) => {
+        setPersonalMenuAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+        setMovieListAnchorEl(null);
+        setPersonalMenuAnchorEl(null);
+    };
     return (
         <>
             <AppBar position="fixed" color="secondary">
@@ -82,20 +104,84 @@ const SiteHeader = ({history}) => {
                                     >
                                         {opt.label}
                                     </MenuItem>
+                                ))};
+                                {moviesOreder.map((opt) => (
+                                    <MenuItem
+                                        key={opt.label}
+                                        color="inherit"
+                                        onClick={() => handleMenuSelect(opt.path)}
+                                    >
+                                        {opt.label}
+                                    </MenuItem>
+                                ))};
+                                {personalMenu.map((opt) => (
+                                    <MenuItem
+                                        key={opt.label}
+                                        color="inherit"
+                                        onClick={() => handleMenuSelect(opt.path)}
+                                    >
+                                        {opt.label}
+                                    </MenuItem>
                                 ))}
                             </Menu>
                         </>
                     ) : (
                         <>
                             {menuOptions.map((opt) => (
-                                <Button
+                                <MenuItem
                                     key={opt.label}
                                     color="inherit"
                                     onClick={() => handleMenuSelect(opt.path)}
                                 >
                                     {opt.label}
-                                </Button>
+                                </MenuItem>
                             ))}
+                            <Button
+                                id="movieList-button"
+                                onClick={handleMovieListClick}
+                                color="inherit"
+                            >
+                                MoviesLists
+                            </Button>
+                            <Menu
+                                id="movieList-menu"
+                                anchorEl={movieListAnchorEl}
+                                open={Boolean(movieListAnchorEl)}
+                                onClose={handleClose}
+                            >
+                                {moviesOreder.map((opt) => (
+                                    <MenuItem
+                                        key={opt.label}
+                                        color="inherit"
+                                        onClick={() => handleMenuSelect(opt.path)}
+                                    >
+                                        {opt.label}
+                                    </MenuItem>
+                                ))}
+                            </Menu>
+                            <Button
+                                id="personalMenu-button"
+                                onClick={handlePersonalMenuClick}
+                                color="inherit"
+                            >
+                                personal
+                            </Button>
+                            <Menu
+                                id="personalMenu-menu"
+                                anchorEl={personalMenuAnchorEl}
+                                open={Boolean(personalMenuAnchorEl)}
+                                onClose={handleClose}
+                            >
+                                {personalMenu.map((opt) => (
+                                    <MenuItem
+                                        key={opt.label}
+                                        color="inherit"
+                                        onClick={() => handleMenuSelect(opt.path)}
+                                    >
+                                        {opt.label}
+                                    </MenuItem>
+                                ))}
+                            </Menu>
                         </>
                     )}
                 </Toolbar>

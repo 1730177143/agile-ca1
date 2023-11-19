@@ -104,7 +104,7 @@ const SiteHeader = ({history}) => {
                                     >
                                         {opt.label}
                                     </MenuItem>
-                                ))};
+                                ))}
                                 {moviesOreder.map((opt) => (
                                     <MenuItem
                                         key={opt.label}
@@ -113,7 +113,7 @@ const SiteHeader = ({history}) => {
                                     >
                                         {opt.label}
                                     </MenuItem>
-                                ))};
+                                ))}
                                 {personalMenu.map((opt) => (
                                     <MenuItem
                                         key={opt.label}

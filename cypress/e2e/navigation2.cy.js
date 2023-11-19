@@ -1,6 +1,6 @@
 let movies;
 
-describe("Navigation", () => {
+describe("TopRated", () => {
     before(() => {
         cy.request(
             `https://api.themoviedb.org/3/movie/top_rated?api_key=${Cypress.env(
@@ -14,7 +14,8 @@ describe("Navigation", () => {
     });
     beforeEach(() => {
         cy.visit("/");
-        cy.get("button").contains("TopRated").click();
+        cy.get("button").contains("MoviesLists").click();
+        cy.contains( 'TopRated').click();
         cy.url().should("include", `/topRated`);
     });
     describe("The Top rated Movies page", () => {

@@ -30,6 +30,7 @@ const SiteHeader = ({history}) => {
 
     ];
     const moviesOreder = [
+        {label: "Popular", path: "/movies/popular"},
         {label: "TopRated", path: "/movies/topRated"},
         {label: "Upcoming", path: "/movies/upcoming"},
         {label: "Trending", path: "/movies/trending"},

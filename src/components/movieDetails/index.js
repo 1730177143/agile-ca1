@@ -9,7 +9,7 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
-
+import { Link } from "react-router-dom";
 
 const root = {
     display: "flex",
@@ -88,6 +88,20 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <MovieReviews movie={movie} />
       </Drawer>
+        <Link to={`/recommendations/${movie.id}`}>
+            <Fab
+                color="secondary"
+                variant="extended"
+                sx={{
+                    position: 'fixed',
+                    bottom: '5em',
+                    right: '1em'
+                }}
+            >
+                <NavigationIcon/>
+                Recommendations
+            </Fab>
+        </Link>
       </>
   );
 };

@@ -27,6 +27,7 @@ const SiteHeader = ({history}) => {
 
     const menuOptions = [
         {label: "Home", path: "/"},
+        {label: "ActorHome", path: "/actors"},
 
     ];
     const moviesOreder = [

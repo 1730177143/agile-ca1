@@ -116,6 +116,20 @@ const MovieDetails = ({movie}) => {  // Don't miss this!
                     Similar
                 </Fab>
             </Link>
+            <Link to={`/credits/${movie.id}`}>
+                <Fab
+                    color="secondary"
+                    variant="extended"
+                    sx={{
+                        position: 'fixed',
+                        bottom: '1em',
+                        right: '19em'
+                    }}
+                >
+                    <NavigationIcon/>
+                    Relational Actors
+                </Fab>
+            </Link>
         </>
     )
         ;

@@ -1,3 +1,5 @@
+import {filterByName, filterByTitle} from "../support/e2e";
+
 let actors;
 let actor;
 describe("Actor Home", () => {
@@ -27,6 +29,25 @@ describe("Actor Home", () => {
             cy.get(".MuiCardHeader-content").each(($card, index) => {
                 cy.wrap($card).find("p").contains(actors[index].name);
             });
+        });
+    });
+    describe("By actor name", () => {
+        it("only display actors with 'm' in the name", () => {
+            const searchString = "m";
+            const matchingActors = filterByName(actors, searchString);
+            cy.get("#filled-search").clear().type(searchString);
+            cy.get(".MuiCardHeader-content").should(
+                "have.length",
+                matchingActors.length
+            );
+            cy.get(".MuiCardHeader-content").each(($card, index) => {
+                cy.wrap($card).find("p").contains(matchingActors[index].name);
+            });
+        });
+        it("handles case when there are no matches", () => {
+            const searchString = "xyxxzyyzz";
+            cy.get("#filled-search").clear().type(searchString);
+            cy.get(".MuiCardHeader-content").should("have.length", 0);
         });
     });
     describe("The Actor Details page", () => {

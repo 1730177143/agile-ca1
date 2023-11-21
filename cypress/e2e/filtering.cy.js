@@ -6,7 +6,6 @@ let movies; // List of Discover movies from TMDB
 
 describe("Filtering", () => {
   before(() => {
-    // Get movies from TMDB and store them locally.
     cy.request(
       `https://api.themoviedb.org/3/discover/movie?api_key=${Cypress.env(
         "TMDB_KEY"

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Header = (props ) => {
-    const title = props.name
+    const title = props.title
     const navigate = useNavigate();
     return (
         <Paper

@@ -1,5 +1,5 @@
 let movies;
-
+let actors;
 describe("TopRated", () => {
     before(() => {
         cy.request(
@@ -89,6 +89,36 @@ describe("Popular", () => {
         it("displays the correct movie titles", () => {
             cy.get(".MuiCardHeader-content").each(($card, index) => {
                 cy.wrap($card).find("p").contains(movies[index].title);
+            });
+        });
+    });
+});
+describe("Actor Home", () => {
+    before(() => {
+        cy.request(
+            `https://api.themoviedb.org/3/person/popular?api_key=${Cypress.env(
+                "TMDB_KEY"
+            )}&language=en-US&include_adult=false&include_video=false&page=1`
+        )
+            .its("body")
+            .then((response) => {
+                actors = response.results;
+            });
+    });
+    beforeEach(() => {
+        cy.visit("/");
+        cy.get(".MuiButtonBase-root").contains("ActorHome").click();
+        cy.url().should("include", `/actors`);
+    });
+    describe("The popular actors page", () => {
+        it("displays the page header and 20 movies", () => {
+            cy.get("h3").contains("Discover Actors");
+            cy.get(".MuiCardHeader-root").should("have.length", 20);
+        });
+
+        it("displays the correct actors name", () => {
+            cy.get(".MuiCardHeader-content").each(($card, index) => {
+                cy.wrap($card).find("p").contains(actors[index].name);
             });
         });
     });

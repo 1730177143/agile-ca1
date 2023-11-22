@@ -74,4 +74,43 @@ describe("Actor Home", () => {
             cy.get(".MuiChip-root").contains(actor.known_for_department);
         });
     });
+    describe("Selecting following actors", () => {
+        it("selected actor card shows the follow button", () => {
+            cy.get(".MuiCardHeader-root").eq(1).find(".MuiButtonBase-root").should("not.exist");
+            cy.get('body').click(0, 0);
+            cy.get("button[aria-label='add to follows']").eq(1).click({});
+            cy.get(".MuiCardHeader-root").eq(1).find(".MuiButtonBase-root");
+        });
+    });
+
+    describe("The follows page", () => {
+        beforeEach(() => {
+            // Add two actors to follows and navigate to Follows page
+            cy.get("button[aria-label='add to follows']").eq(1).click({});
+            cy.get("button[aria-label='add to follows']").eq(3).click({});
+            cy.get('body').click(0, 0);
+            cy.get("button").contains("personal").click();
+            cy.contains('Follows').click();
+            cy.url().should("include", `/follows`);
+            cy.get('body').click(0,0);
+        });
+        it("only the tagged actors are listed", () => {
+            cy.get(".MuiCardHeader-content").should("have.length", 2);
+            cy.get(".MuiCardHeader-content")
+                .eq(0)
+                .find("p")
+                .contains(actors[1].name);
+            cy.get(".MuiCardHeader-content")
+                .eq(1)
+                .find("p")
+                .contains(actors[3].name);
+        });
+        it("removes actors from follows", () => {
+            cy.get("button[aria-label='remove from follows']").eq(0).click();
+            cy.get(".MuiCardHeader-content").should("have.length", 1);
+            cy.get(".MuiCardHeader-content")
+                .find("p")
+                .should("not.contain", actors[1].name);
+        });
+    });
 });

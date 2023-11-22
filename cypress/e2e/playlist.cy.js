@@ -1,5 +1,4 @@
 let movies;
-const movieId = 497582; // Enola Holmes movie id
 
 describe("The playlist feature", () => {
     before(() => {

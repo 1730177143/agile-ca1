@@ -3,6 +3,7 @@ import {getActors} from "../api/tmdb-api";
 import PageTemplate from '../components/templateActorListPage';
 import {useQuery} from 'react-query';
 import Spinner from '../components/spinner';
+import AddToFollowsIcon from "../components/cardIcons/addToFollows";
 
 const HomePage = (props) => {
 
@@ -30,6 +31,7 @@ const HomePage = (props) => {
             title="Discover Actors"
             actors={actors}
             action={(actor) => {
+                return <AddToFollowsIcon actor={actor}/>
             }}
         />
     );

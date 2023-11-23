@@ -31,8 +31,6 @@ const PlaylistPage = () => {
     return q.data
   });
 
-  const toDo = () => true;
-
   return (
     <PageTemplate
       title="Playlist"

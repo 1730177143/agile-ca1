@@ -8,13 +8,12 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
-import Avatar from '@mui/material/Avatar';
 import React, { useContext  } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import WhatshotIcon from '@mui/icons-material/Whatshot';
-import IconButton from "@mui/material/IconButton";
+
 export default function ActorCard({ actor, action }) {
-    const {follows, addToFollows} = useContext(MoviesContext);
+    const {follows} = useContext(MoviesContext);
 
     if (follows.find((id) => id === actor.id)) {
         actor.follow = true;

@@ -49,9 +49,6 @@ const SiteHeader = ({history}) => {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
     const handleMovieListClick = (event) => {
         setMovieListAnchorEl(event.currentTarget);
     };

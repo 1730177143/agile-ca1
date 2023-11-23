@@ -1,4 +1,4 @@
-import {filterByName, filterByTitle} from "../support/e2e";
+import {filterByName} from "../support/e2e";
 
 let actors;
 let actor;

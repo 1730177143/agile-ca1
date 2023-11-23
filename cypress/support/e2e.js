@@ -1,8 +1,11 @@
+import { excerpt } from "../../src/util";
+
 export const filterByTitle = (movieList, string) =>
-  movieList.filter((m) => m.title.toLowerCase().search(string) !== -1);
+    movieList.filter((m) => m.title.toLowerCase().search(string) !== -1);
 
 export const filterByGenre = (movieList, genreId) =>
-  movieList.filter((m) => m.genre_ids.includes(genreId));
+    movieList.filter((m) => m.genre_ids.includes(genreId));
 
 export const filterByName = (actorList, string) =>
     actorList.filter((m) => m.name.toLowerCase().search(string) !== -1);
+export const expectedExcerpt = (reviews, index) => excerpt(reviews[index].content);

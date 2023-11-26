@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,Suspense,lazy} from "react";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -8,8 +8,9 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
-import MovieReviews from "../movieReviews"
 import {Link} from "react-router-dom";
+const MovieReviews = lazy(() => import("../movieReviews"));
+
 
 const root = {
     display: "flex",
@@ -85,9 +86,11 @@ const MovieDetails = ({movie}) => {  // Don't miss this!
                 <NavigationIcon/>
                 Reviews
             </Fab>
+            <Suspense fallback={<h1>Loading page</h1>}>
             <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                 <MovieReviews movie={movie}/>
             </Drawer>
+            </Suspense>
             <Link to={`/recommendations/${movie.id}`}>
                 <Fab
                     color="secondary"

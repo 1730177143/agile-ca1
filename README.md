@@ -22,8 +22,6 @@ This repository contains the implementation of a React App, its associated Cypre
 
 ## Automated Tests.
 
-### Unique functionality testing (if relevant).
-
 
 __Top-rated page__ - The user can know that movies sorted by rating are on a separate page.
 
@@ -73,15 +71,13 @@ __Know actors about the movie__ - The user can know actors about the movie by cl
 
 + cypress/e2e/credits.cy.js
 
-### Error/Exception testing (if relevant).
-
-[State the cases that demonstrate error and/or exception testing.]
+### Error/Exception testing 
 
 1. Display the Favourite Movies page when no movies have been tagged.
 2. Submitting a Movie Review form when the user's name is blank.
 3. Submitting a Movie Review form when the review is too short.
 
-### Cypress Custom commands (if relevant).
+### Cypress Custom commands 
 
 + cypress/e2e/actor.cy.js
 + cypress/e2e/base2.cy.js
@@ -93,17 +89,21 @@ __Know actors about the movie__ - The user can know actors about the movie by cl
 
 ## Code Splitting.
 
-[Specify the pathname of each source code file that contains evidence of code splitting in your React app.]
 
-e.g.
 + src/index.js
 + src/components/movieDetails/index.js
 + src/components/templateMovieListPage/index.js
 + src/components/templateActorListPage/index.js
 
+![codeSpliting](./imgs/codeSpliting.png)
+
 ## Pull Requests.
 
-[ Specify the URL of the GitHub repository that contains a record of the Pull Requests made during this assignment's code (source code or test code). If you used GitLab Merge Requests instead, then simply state this.]
+https://gitlab.com/longliu1/agile-ca1.git
+
+https://github.com/1730177143/agile-ca1.git
+
+![pull](./imgs/pull.png)
 
 ## Independent learning (If relevant).
 

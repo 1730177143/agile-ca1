@@ -107,9 +107,8 @@ https://github.com/1730177143/agile-ca1.git
 
 ## Independent learning (If relevant).
 
-[ Briefly explain the work you did to satisfy the requirements of the Outstanding grade category, and include proof (e.g. screenshots) of its success. Also, mention the files that contain evidence of this work.
+https://1730177143.github.io/agile-ca1
 
-![](./images/sample.png)
+![delopy](./imgs/delopy.png)
 
-State any other evidence of independent learning achieved while completing this assignment.
-
+![deploy](./imgs/deploy.png)

@@ -6,8 +6,6 @@ This repository contains the implementation of a React App, its associated Cypre
 
 ## React App Features.
 
-[ Provide a bullet-point list of the __new features__ you added to the React Movies app, as well as any modifications to existing features).] e.g.
- 
 + Playlist page
 + Top-rated page
 + expand site header
@@ -26,9 +24,6 @@ This repository contains the implementation of a React App, its associated Cypre
 
 ### Unique functionality testing (if relevant).
 
-[Briefly explain the parts of your app's  functionality that are unique and state the associated test file name.] 
-
-e.g.
 
 __Top-rated page__ - The user can know that movies sorted by rating are on a separate page.
 
@@ -88,11 +83,13 @@ __Know actors about the movie__ - The user can know actors about the movie by cl
 
 ### Cypress Custom commands (if relevant).
 
-[ Specify the test file(s) that use a custom Cypress command(s) that you implemented.]
-
-e.g.
-+ cypress/e2e/filtering.cy.js
-+ cypress/e2e/favourites.cy.js
++ cypress/e2e/actor.cy.js
++ cypress/e2e/base2.cy.js
++ cypress/e2e/playlist.cy.js
++ cypress/e2e/recommendations.cy.js
++ cypress/e2e/similar.cy.js
++ cypress/e2e/review.cy.js
++ cypress/e2e/credits.cy.js
 
 ## Code Splitting.
 
@@ -100,8 +97,9 @@ e.g.
 
 e.g.
 + src/index.js
-+ src/pages/favouriteMoviesPage.js
-+ src/components/movieCard/index.js
++ src/components/movieDetails/index.js
++ src/components/templateMovieListPage/index.js
++ src/components/templateActorListPage/index.js
 
 ## Pull Requests.
 

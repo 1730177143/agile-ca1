@@ -1,3 +1,4 @@
+import "../support/commands";
 let actors;
 let actor;
 let movies;
@@ -28,13 +29,11 @@ describe("Movie credits", () => {
     });
     describe("The Movie credits page", () => {
         it("displays the page header and movies", () => {
-            cy.get("h3").contains("Movie Credits");
+            cy.header("Movie Credits");
         });
 
         it("displays the correct movies name", () => {
-            cy.get(".MuiCardHeader-content").each(($card, index) => {
-                cy.wrap($card).find("p").contains(movies[index].title);
-            });
+            cy.testMoviesList(movies);
         });
     });
 });
@@ -61,7 +60,7 @@ describe("credits", () => {
     });
     describe("The credits page", () => {
         it("displays the page header and actors", () => {
-            cy.get("h3").contains("Credits");
+            cy.header("Credits");
         });
         it("displays the correct actors name", () => {
             cy.get(".MuiCardHeader-content").each(($card, index) => {

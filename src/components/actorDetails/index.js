@@ -34,7 +34,7 @@ const ActorDetails = ({actor}) => {  // Don't miss this!
                 }`}/>
                 <Chip
                     icon={<CakeIcon/>}
-                    label={`${actor.place_of_birth.toLocaleString()}`}
+                    label={actor.place_of_birth===null ?'unknown':`${actor.place_of_birth.toLocaleString()}`}
                 />
             </Paper>
             <Paper

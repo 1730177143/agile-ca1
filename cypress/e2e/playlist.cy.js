@@ -1,3 +1,4 @@
+import  '../support/commands';
 let movies;
 
 describe("The playlist feature", () => {
@@ -14,10 +15,7 @@ describe("The playlist feature", () => {
     });
     beforeEach(() => {
         cy.visit("/");
-        cy.get("button").contains("MoviesLists").click();
-        cy.contains('Upcoming').click();
-        cy.url().should("include", `/upcoming`);
-        cy.get('body').click(0, 0);
+        cy.clickMenuitem("MoviesLists",'Upcoming',`/upcoming`);
     });
 
     describe("Selecting playlist", () => {
@@ -34,11 +32,7 @@ describe("The playlist feature", () => {
             // Add two movies to playlist and navigate to Playlist page
             cy.get("button[aria-label='add to playlist']").eq(1).click({});
             cy.get("button[aria-label='add to playlist']").eq(3).click({});
-            cy.get('body').click(0, 0);
-            cy.get("button").contains("personal").click();
-            cy.contains('Playlist').click();
-            cy.url().should("include", `/playlist`);
-            cy.get('body').click(0,0);
+            cy.clickMenuitem("personal",'Playlist',`/playlist`);
         });
         it("only the tagged movies are listed", () => {
             cy.get(".MuiCardHeader-content").should("have.length", 2);

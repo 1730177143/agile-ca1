@@ -70,13 +70,21 @@ __Know actor's details__ - The user can access the actor's details by clicking '
 
 + cypress/e2e/actor.cy.js
 
+__Know movies about the actor__ - The user can know movies about the actor by clicking 'relational movies' on the actor details page.
+
++ cypress/e2e/credits.cy.js
+
+__Know actors about the movie__ - The user can know actors about the movie by clicking 'relational actors' on the movie details page.
+
++ cypress/e2e/credits.cy.js
+
 ### Error/Exception testing (if relevant).
 
 [State the cases that demonstrate error and/or exception testing.]
 
 1. Display the Favourite Movies page when no movies have been tagged.
-1. Submitting a Movie Review form when the user's name is blank.
-1. Other case X
+2. Submitting a Movie Review form when the user's name is blank.
+3. Submitting a Movie Review form when the review is too short.
 
 ### Cypress Custom commands (if relevant).
 

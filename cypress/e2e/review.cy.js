@@ -2,7 +2,7 @@ let movies;
 let id;
 let reviews;
 import {expectedExcerpt} from "../support/e2e";
-
+import "../support/commands";
 describe("Reviews", () => {
     before(() => {
         cy.request(`https://api.themoviedb.org/3/discover/movie?api_key=${Cypress.env("TMDB_KEY")}&language=en-US&include_adult=false&include_video=false&page=1`)
@@ -13,7 +13,7 @@ describe("Reviews", () => {
                 cy.visit("/");
                 cy.get("button").contains("More Info ...").click();
                 // 只有当 movies 已经被赋值后才执行第二个请求
-                id = movies[0].id;
+                id = movies[5].id;
                 cy.request(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${Cypress.env("TMDB_KEY")}&language=en-US&include_adult=false&include_video=false&page=1`)
                     .its("body")
                     .then((response) => {
@@ -43,7 +43,7 @@ describe("Reviews", () => {
         });
     });
 });
-describe("The playlist feature", () => {
+describe("write review", () => {
     before(() => {
         cy.request(
             `https://api.themoviedb.org/3/movie/upcoming?api_key=${Cypress.env(
@@ -57,19 +57,12 @@ describe("The playlist feature", () => {
     });
     beforeEach(() => {
         cy.visit("/");
-        cy.get("button").contains("MoviesLists").click();
-        cy.contains('Upcoming').click();
-        cy.url().should("include", `/upcoming`);
-        cy.get('body').click(0, 0);
+        cy.clickMenuitem("MoviesLists",'Upcoming',`/upcoming`);
     });
     describe("The review form page", () => {
         beforeEach(() => {
             cy.get("button[aria-label='add to playlist']").eq(1).click({});
-            cy.get('body').click(0, 0);
-            cy.get("button").contains("personal").click();
-            cy.contains('Playlist').click();
-            cy.url().should("include", `/playlist`);
-            cy.get('body').click(0, 0);
+            cy.clickMenuitem("personal",'Playlist',`/playlist`);
             cy.get("button[aria-label='remove from Playlist']").next()
                 .get('a[href="/reviews/form"]').eq(0).click();
             cy.get("h2").should('contain', `Write a review`);

@@ -1,4 +1,5 @@
 import {filterByName} from "../support/e2e";
+import  '../support/commands';
 
 let actors;
 let actor;
@@ -21,10 +22,8 @@ describe("Actor Home", () => {
     });
     describe("The popular actors page", () => {
         it("displays the page header and 20 actors", () => {
-            cy.get("h3").contains("Discover Actors");
-            cy.get(".MuiCardHeader-root").should("have.length", 20);
+            cy.headerAndMovies("Discover Actors");
         });
-
         it("displays the correct actors name", () => {
             cy.get(".MuiCardHeader-content").each(($card, index) => {
                 cy.wrap($card).find("p").contains(actors[index].name);
@@ -68,10 +67,10 @@ describe("Actor Home", () => {
         it(" displays the actor name, biography and birthday and place of birth", () => {
             cy.get("h3").contains(actor.name);
             cy.get("h3").get(".MuiTypography-root").contains("Biography");
-            cy.get(".MuiTypography-root").next().contains(actor.biography);
-            cy.get(".MuiChip-root").contains(actor.birthday);
-            cy.get(".MuiChip-root").contains(actor.place_of_birth.toLocaleString());
-            cy.get(".MuiChip-root").contains(actor.known_for_department);
+            cy.get(".MuiTypography-root").should('contain', actor.biography);
+            cy.get(".MuiChip-root").should('contain', actor.birthday);
+            cy.get(".MuiChip-root").should('contain', actor.place_of_birth);
+            cy.get(".MuiChip-root").should('contain', actor.known_for_department);
         });
     });
     describe("Selecting following actors", () => {
@@ -88,11 +87,7 @@ describe("Actor Home", () => {
             // Add two actors to follows and navigate to Follows page
             cy.get("button[aria-label='add to follows']").eq(1).click({});
             cy.get("button[aria-label='add to follows']").eq(3).click({});
-            cy.get('body').click(0, 0);
-            cy.get("button").contains("personal").click();
-            cy.contains('Follows').click();
-            cy.url().should("include", `/follows`);
-            cy.get('body').click(0,0);
+            cy.clickMenuitem("personal",'Follows',`/follows`);
         });
         it("only the tagged actors are listed", () => {
             cy.get(".MuiCardHeader-content").should("have.length", 2);

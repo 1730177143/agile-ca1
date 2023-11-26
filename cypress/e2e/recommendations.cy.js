@@ -1,3 +1,4 @@
+import  '../support/commands';
 let movies;
 let id;
 describe("Recommendations", () => {
@@ -25,12 +26,10 @@ describe("Recommendations", () => {
     });
     describe("The Recommendations Movies page", () => {
         it("displays the page header", () => {
-            cy.get("h3").contains("Recommendations");
+            cy.header("Recommendations");
         });
         it("displays the correct movie titles", () => {
-            cy.get(".MuiCardHeader-content").each(($card, index) => {
-                cy.wrap($card).find("p").contains(movies[index].title);
-            });
+            cy.testMoviesList(movies);
         });
     });
 });
